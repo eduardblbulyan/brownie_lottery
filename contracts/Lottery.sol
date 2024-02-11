@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.6.0;
 
 import "@chainlink/contracts/src/v0.6/interfaces/AggregatorV3Interface.sol";
@@ -12,12 +13,11 @@ contract Lottery {
 
     constructor(address _priceFeedAddress) public {
         usdEntryFee = 50 * (10**18); // because in Wei, convert to Eth;
-        ethUsdPriceFeed = AggregatorV3Interface();
+        ethUsdPriceFeed = AggregatorV3Interface(_priceFeedAddress);
     }
 
     function enter() public payable {
         // 50$ minimum
-        require(msg.value >=)
         players.push(msg.sender);
     }
     function get_entrance_fee() public view returns(uint256){
